@@ -28,7 +28,7 @@ void init(ifstream &infile1){
     }
 }
 
-void process(ofstream &file1,fstream &file2){
+void process(ifstream &file1,fstream &file2){
     string line;
     ifstream checkfile2("file2.csv");
     if(!file2.is_open())
@@ -43,8 +43,8 @@ void process(ofstream &file1,fstream &file2){
     }
     else{
         //fstream file2("file2.csv", ios::in | ios::out);
-        file2.seekg(0, ios::end);
-        if (checfile2.tellg() == 0) {
+        file2.seekg(ios::end);
+        if (checkfile2.tellg() == 0) {
             cout << "File2 is empty" << endl;
             checkfile2.close();
             file2.open("file2.csv",ios::out);
@@ -127,7 +127,7 @@ int main() {
     
     // Processs
 
-    //fstream file2("file2.csv",ios::out);
+    fstream file2("file2.csv",ios::out);
     process(file1,file2);
     // string line;
     // if(file2.is_open())
