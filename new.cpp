@@ -28,8 +28,6 @@ void init(ifstream &infile1){
     }
 }
 
-
-
 void process(ifstream &file1,fstream &file2){
     string line;
     if(!file2.is-open())
