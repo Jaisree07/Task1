@@ -2,7 +2,7 @@
 #include <fstream>
 using namespace std;
 
-
+//initialization
 void init(ifstream &infile1){
     
     if(infile1.is_open())
@@ -28,9 +28,9 @@ void init(ifstream &infile1){
     }
 }
 
-void process(ifstream &file1,fstream &file2){
+void process(ofstream &file1,){
     string line;
-    if(!file2.is-open())
+    if(!file2.is_open())
     {
         cout<<"File2 is not found"<<endl;
         cout<<"File2 is created"<<endl;
@@ -57,7 +57,7 @@ void process(ifstream &file1,fstream &file2){
         cout<<"Clear the data"<<endl;
         ofstream secFile("file2.csv",ios::trunc);
         cout<<"File2 is cleared"<<endl;
-        seceFile.close();
+        secFile.close();
     }
 }
     // if(file2.is_open())
@@ -92,11 +92,6 @@ void process(ifstream &file1,fstream &file2){
     file2.close();
 }
 
-void trunc(ofstream &file2)
-{
-     cout<<"File2 is deleted"<<endl;
-}
-
 int main() { 
     // string file1="file1.csv";
     // string file2="file2.csv";
@@ -129,7 +124,7 @@ int main() {
     
     // Processs
 
-    fstream file2("file2.csv",ios::out);
+    //fstream file2("file2.csv",ios::out);
     process(file1,file2);
     // string line;
     // if(file2.is_open())
