@@ -28,23 +28,26 @@ void init(ifstream &infile1){
     }
 }
 
-void process(ofstream &file1,){
+void process(ofstream &file1,fstream &file2){
     string line;
+    ifstream checkfile2("file2.csv");
     if(!file2.is_open())
     {
         cout<<"File2 is not found"<<endl;
         cout<<"File2 is created"<<endl;
-        fstream file2("file2.csv", ios::out);
+        file2.open("file2.csv", ios::out);
         while(getline(file1,line))
             file2<<line<<endl;
-        cout<<"File2 copied"<<endl;
+        cout<<"File2 is copied"<<endl;
         file2.close();
     }
     else{
-        fstream file2("file2.csv", ios::in | ios::out);
+        //fstream file2("file2.csv", ios::in | ios::out);
         file2.seekg(0, ios::end);
-        if (file2.tellg() == 0) {
+        if (checfile2.tellg() == 0) {
             cout << "File2 is empty" << endl;
+            checkfile2.close();
+            file2.open("file2.csv",ios::out);
             file2.seekp(0, ios::beg);
             file1.clear();
             file1.seekg(0, ios::beg);
@@ -55,9 +58,9 @@ void process(ofstream &file1,){
     else{
         cout<<"File2 has data"<<endl;
         cout<<"Clear the data"<<endl;
-        ofstream secFile("file2.csv",ios::trunc);
+        checkfile2.close();
+        file2.open("file2.csv",ios::in|ios::trunc);
         cout<<"File2 is cleared"<<endl;
-        secFile.close();
     }
 }
     // if(file2.is_open())
